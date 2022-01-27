@@ -1,17 +1,17 @@
 const { Book, User } = require('../models');
-import '../controllers/user-controller'
-import { createUser, deleteBook, getSingleUser, login } from '../controllers/user-controller';
 
 const resolvers = {
   Query: {
     me: async () => {
-      return (getSingleUser())
+      return User.find({})
     }
   },
 
   Mutation: {
     login: async (parent, { email, password }) => {
-      return login(email, password)
+      return User.findOne({
+        email: email, password: password
+      })
     },
     addUser: async (parent, { username, email, password }) => {
       return createUser(username, email, password)
