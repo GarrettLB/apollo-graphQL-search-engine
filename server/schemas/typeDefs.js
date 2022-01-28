@@ -7,7 +7,7 @@ const typeDefs = gql`
     title: String!
     boodId: String!
     image: String
-    link:string
+    link: String
   }
 
   type User {
