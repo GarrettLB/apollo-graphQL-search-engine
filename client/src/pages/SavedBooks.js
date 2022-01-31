@@ -13,7 +13,7 @@ const SavedBooks = () => {
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
-  const [getMe, { error }] = useQuery(GET_ME);
+  const { loading, error, data } = useQuery(GET_ME);
   const [deletBook, { err }] = useMutation(REMOVE_BOOK);
 
   useEffect(() => {
@@ -25,13 +25,11 @@ const SavedBooks = () => {
           return false;
         }
 
-        const user = await getMe()
-
         if (error) {
           throw new Error('something went wrong!');
         }
 
-        setUserData(user);
+        setUserData(data);
       } catch (err) {
         console.error(err);
       }
@@ -66,7 +64,7 @@ const SavedBooks = () => {
   };
 
   // if data isn't here yet, say so
-  if (!userDataLength) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
 
