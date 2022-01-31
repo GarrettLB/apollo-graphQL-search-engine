@@ -14,9 +14,7 @@ const resolvers = {
 
   Mutation: {
     login: async (parent, { email, password }) => {
-      const finduser = await User.findOne({
-        email: email
-      })
+      const finduser = await User.findOne({email})
 
       if (!finduser) {
         throw new AuthenticationError('No user with this email found!')
@@ -29,7 +27,7 @@ const resolvers = {
       }
 
       const token = signToken(finduser)
-      return ({token, finduser})
+      return { token, finduser }
     },
     addUser: async (parent, {username, email, password}) => {
       const newuser = await User.create({username, email, password})
