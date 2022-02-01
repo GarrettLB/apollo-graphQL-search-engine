@@ -31,8 +31,8 @@ const SavedBooks = () => {
     }
 
     try {
-      await deleteBook({
-        variables: { bookId }
+      const { data } = await deleteBook({
+        variables: {bookId: bookId}
       })
 
       if (err) {
