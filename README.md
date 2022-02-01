@@ -23,4 +23,4 @@ This book search engine was built to showcase GraphQl. I replaced an existing RE
 Application deployed live here: https://graphql-search-engine.herokuapp.com/
 
 Screenshot:  
-<img src="./assets/images/ScreenShot.png">
+<img src="./images/ScreenShot.png">
